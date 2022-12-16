@@ -13,7 +13,7 @@ namespace WfcPatcher {
 #else
 				string versionString = version.Major + "." + version.Minor;
 #endif
-				return "WfcPatcher " + versionString;
+				return "WfcPatcher " + versionString + " (DSLink Fork)";
 			}
 		}
 
@@ -485,8 +485,10 @@ namespace WfcPatcher {
 			bool replaced = ReplaceInData( data, "https://", "http://", paddingByte, writeAdditionalBytePostString );
 
 			if ( CommandLineArguments.Domain != null ) {
-				replaced = ReplaceInData( data, "nintendowifi.net", CommandLineArguments.Domain, paddingByte, writeAdditionalBytePostString ) || replaced;
+				replaced = ReplaceInData( data, "en-ds.pokemon-gl.com", CommandLineArguments.Domain, paddingByte, writeAdditionalBytePostString ) || replaced;
 			}
+			else {
+				replaced = ReplaceInData( data, "en-ds.pokemon-gl.com", "229.ip.ply.gg:19260", paddingByte, writeAdditionalBytePostString ) || replaced;
 
 			return replaced;
 		}
